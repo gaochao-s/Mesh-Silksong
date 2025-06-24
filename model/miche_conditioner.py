@@ -31,7 +31,7 @@ class PointConditioner(torch.nn.Module):
         # open-source version of miche
         if model_name == 'miche-256-feature':
             ckpt_path = "miche/shapevae-256.ckpt"
-            if not os.path.exist(ckpt_path):
+            if not os.path.exists(ckpt_path):
                 ckpt_path=None
                 print('[WARNING] Michelangelo ckpt not exist, please check if you are training')
             config_path = 'miche/shapevae-256.yaml'
