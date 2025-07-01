@@ -118,15 +118,15 @@ if __name__ == "__main__":
     all_dataset=['abo','thingi10k']
     # all_dataset=['3dfuture','shapenetv2']
     # all_dataset=['objaversev1']
-    all_dataset=['trellis-hssd']
-    all_dataset=['gobjaversev1']
+    all_dataset=['trellis-objxl-github']
+    # all_dataset=['gobjaversev1']
     split_list=[0, 100, 500, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000]
     for dataset_name in all_dataset:
         # sample and analyze training set
-        # sample_table_specify(dataset_name=dataset_name, reso=128, verison=4, filter_num=11, num=50, split_list=split_list)
+        sample_table_specify(dataset_name=dataset_name, reso=128, verison=4, filter_num=11, num=50, split_list=split_list)
 
         # generate test set, excluded in data_provider
-        sample_and_generate_testset_table(dataset_name=dataset_name, reso=128, verison=4, filter_num=11, num=200, sample_batch=0)
+        # sample_and_generate_testset_table(dataset_name=dataset_name, reso=128, verison=4, filter_num=11, num=200, sample_batch=0)
         
 
     

@@ -1,5 +1,12 @@
 # Mesh Silksong: Auto-Regressive Mesh Generation as Weaving Silk
 
+
+![img](./assets/teaser_mid_compress.png)
+
+## todo
+- [] Fix bugs of gemetry processing like "mobius loop".
+- [] Release checkpoint trained on more data.
+
 ## 1. Environment
 #### Conda
 ```
@@ -8,8 +15,30 @@ conda activate silk
 pip install -r requirements.txt
 ```
 #### Docker (Optional)
+1. pull docker image
 ```
-todo
+docker pull song21/silk:v1
+```
+2. start docker container
+
+For example, if you are running docker on Windows, and this project is stored in `D:\Docker_projs\codes\MeshSilksong`, run the command in windows cmd like this:
+```
+docker run -it --name silk --gpus all -p 8050:22 -v D:\Docker_projs\codes\MeshSilksong:/workspace/MeshSilksong:rw song21/silk:v1
+```
+3. get into docker container
+
+For example, in windows cmd:
+```
+docker exec -it silk /bin/bash
+```
+4. activate conda env (in docker container)
+```
+conda activate silk
+```
+5. If sudo in container:
+```
+su root
+passwd: 111111
 ```
 
 ## 2. Checkpoints Download
@@ -52,10 +81,89 @@ If you have a cluster, run the slurm script:
 sbatch slurm_jobs/infer_silksong_obj.sh
 ```
 
-# todo: training guidance
+## 4. Training
+#### 4.1 Train from scratch
+1. Hardware Requirements
 
-# todo: non-manifold process
+It is recommended to prepare at least 16 GPUs if the dataset scale is 50K+. Empirically, it may take about 2 weeks for 100K data items on 16 H800 GPUs, the training time will be significantly shorter with more GPUs.
+
+2. Point Cloud Encoder
+
+Download pretrained [Michelangelo](https://github.com/NeuralCarver/Michelangelo) point-encoder.
+
+3. Data Prefilter
+
+To prevent the blocking of data iter during training, the training data is recommended to be processed via silksong tokenization first to filter unnessary items (e.g. Meshes with too many faces).
+
+Refer to `dataset_clean.md` for data prefilter and data organization.
+
+
+4. Data Organization
+
+Following `dataset_clean.md`, the training data should be organized in a `.xlsx` file for each dataset and the file should be saved to `./datasets/cleaned`. The testing data's `.xlsx` file should be saved in `datasets/sample_test/tables`. During training, 32 items will be selected from training set for evaluation. Refer to `config/options.py DataConfigs` for modifying. 
+
+
+5. Training
+
+Refer to the template `scripts/train_silksong_scratch_gpu16.sh` for training from scratch. Follow the guidance to handle different requirements:
+
+- If you just want to train on a single node with 8 GPUs: 
+
+Just modify `--config_file acc_configs/gpu16.yaml` to `--config_file acc_configs/gpu8.yaml`
+
+- If you want to train on 2 nodes with 8 GPUs for each node:
+
+Apply nodes first, supposing the `server10` and `server11` are available nodes on cluster and the internal network connection should be available. Then, connect to main node `server10`:
+```
+ssh server10
+sh MeshSilksong/scripts/train_silksong_scratch_gpu16.sh
+```
+Then, connect to another node `server11`:
+```
+ssh server11
+MACHINE_RANK=1 MASTER_ADDR=server10 MeshSilksong/scripts/train_silksong_scratch_gpu16.sh
+```
+After doing these, the multi-nodes training should get started.
+
+6. Specify Training Dataset
+
+Following `dataset_clean.md`, each dataset that used for training will be stored in a `.xlsx` file. You can specify the dataset in `DATA_SUBSETS` of training script.
+
+
+#### 4.2 Finetune on your own datasets
+Refer to the template `scripts/train_silksong_ft_gpu16.sh` for finetuning on you own dataset. You may follow the templete in `dataset_clean.md` to organize them in a .xlsx file.
+
+
+## 5. Non-manifold Process
+
+We also encapsulated the code for non-manifold processing separately. Refer to `nonmani_process.md` for guidance.
+
+## Acknowledgements
+The half-edge data structure of geometry processing is borrowed from EdgeRunner's C++ implementation.
+```
+@article{tang2024edgerunner,
+  title={Edgerunner: Auto-regressive auto-encoder for artistic mesh generation},
+  author={Tang, Jiaxiang and Li, Zhaoshuo and Hao, Zekun and Liu, Xian and Zeng, Gang and Liu, Ming-Yu and Zhang, Qinsheng},
+  journal={arXiv preprint arXiv:2409.18114},
+  year={2024}
+}
+```
+The model architecture is borrowed from BPT's open source implementation.
+```
+@inproceedings{weng2025scaling,
+  title={Scaling mesh generation via compressive tokenization},
+  author={Weng, Haohan and Zhao, Zibo and Lei, Biwen and Yang, Xianghui and Liu, Jian and Lai, Zeqiang and Chen, Zhuo and Liu, Yuhong and Jiang, Jie and Guo, Chunchao and others},
+  booktitle={Proceedings of the Computer Vision and Pattern Recognition Conference},
+  pages={11093--11103},
+  year={2025}
+}
+```
+Thanks other wonderful works:
+- [Michelangelo](https://github.com/NeuralCarver/Michelangelo)
+- [TreeMeshGPT](https://github.com/sail-sg/TreeMeshGPT)
+- [DeepMesh](https://github.com/zhaorw02/DeepMesh)
+- [MeshAnything V2](https://github.com/buaacyw/MeshAnythingV2/tree/main)
 
 
 
-# Citations
+## Citation
