@@ -317,12 +317,12 @@ def init_trellis_objxl_github(type, version, face_type, resolution, load):
     table_number=len(type_names)
     print(f'objxl_github: {table_number} blocks') # 3038
     ############ just stat
-    # lack_block=[]
-    # for index in range(3038):
-    #     if f"b{index:06}.xlsx" not in type_names:
-    #         lack_block.append(index)
-    # print(lack_block)
-    # return
+    lack_block=[]
+    for index in range(3038):
+        if f"b{index:06}.xlsx" not in type_names:
+            lack_block.append(index)
+    print(lack_block)
+    return
     ############
     step=50
     

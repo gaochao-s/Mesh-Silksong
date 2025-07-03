@@ -87,7 +87,7 @@ def get_base_dir_rel(name):
     'trellis-3dfuture': '3D-FUTURE-model',
     'trellis-abo': 'raw',
     'trellis-toys4k': '',
-    'trellis-objxl-github': 'trellis_objxl_github_convert',
+    'trellis-objxl-github': 'trellis_objxl_github_convertNorm',
     'trellis-objxl-sketchfab': 'hf-objaverse-v1',
     'debug': 'debug_input'
     }
