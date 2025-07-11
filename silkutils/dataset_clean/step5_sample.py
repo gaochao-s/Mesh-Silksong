@@ -118,8 +118,8 @@ if __name__ == "__main__":
     all_dataset=['abo','thingi10k']
     # all_dataset=['3dfuture','shapenetv2']
     # all_dataset=['objaversev1']
-    all_dataset=['trellis-objxl-github']
-    # all_dataset=['gobjaversev1']
+    # all_dataset=['trellis-objxl-github']
+    all_dataset=['gobjaversev1']
     split_list=[0, 100, 500, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000]
     for dataset_name in all_dataset:
         # sample and analyze training set

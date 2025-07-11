@@ -167,3 +167,12 @@ Thanks other wonderful works:
 
 
 ## Citation
+
+```
+@article{song2025mesh,
+  title={Mesh Silksong: Auto-Regressive Mesh Generation as Weaving Silk},
+  author={Song, Gaochao and Zhao, Zibo and Weng, Haohan and Zeng, Jingbo and Jia, Rongfei and Gao, Shenghua},
+  journal={arXiv preprint arXiv:2507.02477},
+  year={2025}
+}
+```

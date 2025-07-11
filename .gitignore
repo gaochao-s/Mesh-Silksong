@@ -27,6 +27,9 @@ miche/shapevae-256.ckpt
 miche/__pycache__
 model/__pycache__
 scripts/train_silksong_ft_gpu16_back.sh
+scripts/train_silksong_c_gpu16_back.sh
+scripts/infer_silksong_obj_back.sh
+slurm_jobs/infer_silksong_obj_back.sh
 silkutils/__pycache__
 silkutils/dataset_clean/__pycache__
 silkutils/dataset_clean/blender_env
@@ -46,6 +49,7 @@ learn.py
 run_docker.txt
 train_back.py
 infer_back.py
+vis_wandb.ipynb
 
 
 

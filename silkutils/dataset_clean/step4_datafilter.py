@@ -231,7 +231,7 @@ if __name__ == "__main__":
     # datasetnames=['3dcaricshop','3dfuture','abo','animal3d','buildingnet','gso', 'thingi10k','toys4k','shapenetv2','objaversev1']
     # datasetnames=['3dfuture','thingi10k','toys4k','shapenetv2','gobjaversev1']
     filtered_xlsx_save_dir='/public/home/group_gaosh/gaochao/main_workspace/MeshSilksong/datasets/cleaned'
-    datasetnames=['gobjaversev1']
+    datasetnames=['trellis-objxl-github']
     for dataset_name in datasetnames:
-        filter_dataset(dataset_name=dataset_name, filtered_xlsx_save_dir=filtered_xlsx_save_dir, filter_version=11, version_list=[4], merge=True)
+        filter_dataset(dataset_name=dataset_name, filtered_xlsx_save_dir=filtered_xlsx_save_dir, filter_version=0, version_list=[4], merge=False)
         

@@ -8,20 +8,20 @@ def part_batch_mapping(dataset_name):
     # the start and end index of init xlsx file, you may modify it for part processing
     map_part={
         '3dfuture': (0, 9), # for example, xlsx file part index from 0-8, it is based on you situation
-        'objaverse': (0, 158), # 0-157
+        'objaverse': (0, 40), # 0-157
         'gobjaversev1': (40, 53), # 0-52
         'abo': (0, 36),
         'toys4k': (0, 1),
         'thingi10k': (0, 5),
-        'shapenetv2': (0, 55),
+        'shapenetv2': (30, 55), # 0-54
         'animal3d': (0, 2),
         'gso': (0, 1),
         'buildingnet': (0, 1),
         'trellis-hssd': (0, 4),
         'trellis-abo': (0, 36),
         'trellis-3dfuture': (0, 5),
-        'trellis-objxl-sketchfab': (0, 160), # 0-159
-        'trellis-objxl-github': (40, 49) # 0-48
+        'trellis-objxl-sketchfab': (120, 160), # 0-159
+        'trellis-objxl-github': (50, 61) # 0-60 61 end
     }
     # process files with batch size 1000 because of ulimit on linux. Just keep this > xlsx's mesh number/1000
     map_batch={

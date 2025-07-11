@@ -102,7 +102,7 @@ infer_dataset=InferDataset(input_type='mesh', input_list=sorted(file_paths))
 infer_dataloader=torch.utils.data.DataLoader(
         infer_dataset,
         batch_size=opt.infer.infer_batch,
-        drop_last = True,
+        drop_last = False,
         shuffle = False,
         collate_fn=collate_fn_infer,
 )
