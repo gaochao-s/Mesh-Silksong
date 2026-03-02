@@ -1,11 +1,22 @@
-# Mesh Silksong: Auto-Regressive Mesh Generation as Weaving Silk
+# (Mesh Silksong) Topology-Preserved Auto-regressive Mesh Generation in the Manner of Weaving Silk
+
+<p align="center">
+  <a href="https://gaochao-s.github.io/pages/MeshSilksong/">
+    <img src="https://img.shields.io/badge/Project-Page-1f77b4">
+  </a>
+  <a href="https://arxiv.org/abs/2507.02477">
+    <img src="https://img.shields.io/badge/arXiv-2507.02477-b31b1b">
+  </a>
+  <a href="https://huggingface.co/gcsong/mesh_silksong/tree/main">
+    <img src="https://img.shields.io/badge/🤗-hugging_face-ffd21e">
+  </a>
+  
+</p>
 
 
 ![img](./assets/teaser_mid_compress.png)
 
-## todo
-- [ ] Fix bugs of geometry processing like "mobius loop".
-- [ ] Release checkpoint trained on more data.
+
 
 ## 1. Environment
 #### Conda
@@ -169,10 +180,10 @@ Thanks other wonderful works:
 ## Citation
 
 ```
-@article{song2025mesh,
-  title={Mesh Silksong: Auto-Regressive Mesh Generation as Weaving Silk},
+@inproceedings{songtopology,
+  title={Topology-Preserved Auto-regressive Mesh Generation in the Manner of Weaving Silk},
   author={Song, Gaochao and Zhao, Zibo and Weng, Haohan and Zeng, Jingbo and Jia, Rongfei and Gao, Shenghua},
-  journal={arXiv preprint arXiv:2507.02477},
-  year={2025}
+  booktitle={The Fourteenth International Conference on Learning Representations},
+  year={2026}
 }
 ```
