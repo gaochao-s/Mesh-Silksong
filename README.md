@@ -1,14 +1,11 @@
 # (Mesh Silksong) Topology-Preserved Auto-regressive Mesh Generation in the Manner of Weaving Silk
 
 <p align="center">
-  <a href="https://gaochao-s.github.io/pages/MeshSilksong/">
-    <img src="https://img.shields.io/badge/Project-Page-1f77b4">
+  <a href="https://gaochao-s.github.io/pages/MeshSilksong/"><img src="https://img.shields.io/badge/Project-Page-1f77b4">
   </a>
-  <a href="https://arxiv.org/abs/2507.02477">
-    <img src="https://img.shields.io/badge/arXiv-2507.02477-b31b1b">
+  <a href="https://arxiv.org/abs/2507.02477"><img src="https://img.shields.io/badge/arXiv-2507.02477-b31b1b">
   </a>
-  <a href="https://huggingface.co/gcsong/mesh_silksong/tree/main">
-    <img src="https://img.shields.io/badge/🤗-hugging_face-ffd21e">
+  <a href="https://huggingface.co/gcsong/mesh_silksong/tree/main"><img src="https://img.shields.io/badge/🤗-hugging_face-ffd21e">
   </a>
   
 </p>
